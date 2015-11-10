@@ -6,7 +6,7 @@
 // **************************************************************** 
 public class ManageAccounts {    
 	public static void main(String[] args)     { 
-		Account acct1, acct2, acct3;  
+		Account acct1, acct2;  
 		//create account1 for Sally with $1000  
 		acct1 = new Account(1000, "Sally", 1111);  
 		//create account2 for Joe with $500 
@@ -25,7 +25,6 @@ public class ManageAccounts {
 		acct2.changeName("Jospeh");
 		//print summary for both accounts    
 		acct1.transferFunds(100, acct2);
-		acct3 = new Account("Jim", 1001);
-		acct1.toString(); acct2.toString(); acct3.toString();
+		acct1.toString(); acct2.toString();
 	}
 }
