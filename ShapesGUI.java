@@ -3,6 +3,7 @@ import javax.swing.*;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URL;
 import java.awt.Graphics;
 import java.text.DecimalFormat;
 import java.awt.Color;
@@ -10,11 +11,11 @@ import java.awt.Font;
 
 public class ShapesGUI extends JFrame {
 
-	final ImageIcon Icon = new ImageIcon("/Users/s960339/Documents/APCS/shaq.gif");
+	ImageIcon Icon = new ImageIcon("/Users/s960339/Documents/APCS/shaq.gif");
 	final ImageIcon Icon2 = new ImageIcon("/Users/s960339/Documents/APCS/36.gif");
 	final ImageIcon Icon3 = new ImageIcon("/Users/s960339/Documents/APCS/giphy.gif");
 	final ImageIcon Icon4 = new ImageIcon("/Users/s960339/Documents/APCS/John-Cena-Shock-to-Smile.gif");
-	
+	final ImageIcon Icon5 = new ImageIcon("/Users/s960339/Documents/APCS/375.gif");
 	
 	public JTextField radius, side, suar, volume;
 	public JLabel rad, sidep, surf, vol, clabel, mlabel;
@@ -22,6 +23,8 @@ public class ShapesGUI extends JFrame {
 	public String mtitle, cmessage;
 	public double sa, volumee;
 	String[] difshapes = {"Capsule","Circular Cone", "Circular Cylinder", "Cube", "Hemisphere", "Sphere"};
+	String[] icons = {"/Users/s960339/Documents/APCS/shaq.gif", "/Users/s960339/Documents/APCS/36.gif", 
+			"/Users/s960339/Documents/APCS/giphy.gif", "/Users/s960339/Documents/APCS/John-Cena-Shock-to-Smile.gif", "/Users/s960339/Documents/APCS/Techno-Viking1.gif"};
 	public static Font font = new Font("Times New Roman", Font.BOLD,14);
 	public static Font Output_font = new Font("Times New Roman", Font.BOLD | Font.ITALIC, 16);
 
@@ -67,6 +70,23 @@ public ShapesGUI()
 		Double rvalue = Double.valueOf(rstring);
 		String hstring = side.getText();
 		Double hvalue = Double.valueOf(hstring);
+		int rng = (int) (Math.random() * 50);
+		if (rng >= 0 && rng < 10) {
+			// random number generator that determines what icon is used for the pop-up
+			Icon = new ImageIcon(icons[0]);
+		}
+		else if (rng >= 10 && rng < 20) {
+			Icon = new ImageIcon(icons[1]);
+		}
+		else if (rng >= 20 && rng < 30) {
+			Icon = new ImageIcon(icons[2]);
+		}
+		else if (rng >= 30 && rng < 40) {
+			Icon = new ImageIcon(icons[3]);
+		}
+		else {
+			Icon = new ImageIcon(icons[4]);
+		}
 		//rvalue and hvalue are the double values of the two user inputs
 		int psel = shape.getSelectedIndex();
 		switch (psel)
@@ -114,7 +134,7 @@ public ShapesGUI()
 		    mtitle = "Fun Fact: Cones";
 			clabel =new JLabel( "I love cones, especially full of ice cream!");
 		    clabel.setFont(Output_font);
-		    JOptionPane.showMessageDialog(null, clabel, mtitle, JOptionPane.PLAIN_MESSAGE, Icon2);
+		    JOptionPane.showMessageDialog(null, clabel, mtitle, JOptionPane.PLAIN_MESSAGE, Icon);
 		}// end of if 1
 		
 		if (psel ==2)
@@ -122,7 +142,7 @@ public ShapesGUI()
 		    mtitle = "Fun Fact: Cylinders";
 			clabel =new JLabel( "Cylinders are just circles, but taller!");
 		    clabel.setFont(Output_font);	    
-		    JOptionPane.showMessageDialog(null, clabel, mtitle, JOptionPane.PLAIN_MESSAGE, Icon3);
+		    JOptionPane.showMessageDialog(null, clabel, mtitle, JOptionPane.PLAIN_MESSAGE, Icon);
 		}// end of if 2
 		
 		if (psel == 3)
@@ -130,14 +150,14 @@ public ShapesGUI()
 		mtitle = "Fun Fact: Cubes";
 		clabel =new JLabel("A cube is a square that just didn't think two dimensions were enough.");
 	    clabel.setFont(Output_font);
-		JOptionPane.showMessageDialog(null,  clabel, mtitle, JOptionPane.PLAIN_MESSAGE, Icon3);
+		JOptionPane.showMessageDialog(null,  clabel, mtitle, JOptionPane.PLAIN_MESSAGE, Icon);
 		}// end of if 3
 		
 		if (psel == 4)
 		{
 		mtitle = "Fun Fact: Hemispheres";
 		cmessage = "Hemispheres: for when a sphere is just too much!";
-		JOptionPane.showMessageDialog(null,  cmessage, mtitle, JOptionPane.PLAIN_MESSAGE, Icon2);
+		JOptionPane.showMessageDialog(null,  cmessage, mtitle, JOptionPane.PLAIN_MESSAGE, Icon);
 		}// end of if 4
 		
 		if (psel == 5)
@@ -145,7 +165,7 @@ public ShapesGUI()
 		mtitle = "Fun Fact: Spheres";
 		clabel =new JLabel( "Spheres make the world go round!");
 	    clabel.setFont(Output_font);
-		JOptionPane.showMessageDialog(null,  clabel, mtitle, JOptionPane.PLAIN_MESSAGE, Icon4);
+		JOptionPane.showMessageDialog(null,  clabel, mtitle, JOptionPane.PLAIN_MESSAGE, Icon);
 		}// end of if 5
 		
 	
