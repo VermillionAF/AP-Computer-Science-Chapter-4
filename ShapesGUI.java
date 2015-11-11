@@ -18,7 +18,6 @@ public class ShapesGUI extends JFrame {
 	
 	public JTextField radius, side, suar, volume;
 	public JLabel rad, sidep, surf, vol, clabel, mlabel;
-	public JComboBox shapes;
 	public JButton CalculateButton;
 	public String mtitle, cmessage;
 	public double sa, volumee;
@@ -26,7 +25,7 @@ public class ShapesGUI extends JFrame {
 	public static Font font = new Font("Times New Roman", Font.BOLD,14);
 	public static Font Output_font = new Font("Times New Roman", Font.BOLD | Font.ITALIC, 16);
 
-public ShapesGUI()
+public ShapesGUI() 
 {
    setLayout(new FlowLayout(FlowLayout.LEFT, 10, 20));
    rad = new JLabel("Radius (m)");
@@ -35,12 +34,14 @@ public ShapesGUI()
    add(radius);
    setEnabled(true);
    setVisible(true);
+   radius.setText("0");
    sidep = new JLabel("Length (m)");
    add(sidep);
    side = new JTextField(8);// Text box for length
    add(side);
    setEnabled(true);
    setVisible(true);
+   side.setText("0");
    surf = new JLabel("Surface Area (m^2)");
    add(surf);
    suar = new JTextField(8);// Text box used for surface area output
@@ -53,59 +54,51 @@ public ShapesGUI()
    add(volume);
    setEnabled(true);
    setVisible(true);
-   final JComboBox planets = new JComboBox(difshapes);
-   planets.setSelectedIndex(0);
-   add(planets);
+   final JComboBox shape = new JComboBox(difshapes);
+   shape.setSelectedIndex(0);
+   add(shape);
    setEnabled(true);
    CalculateButton = new JButton("Swagulate");// Calculate 
    add(CalculateButton);
    CalculateButton.addActionListener( new ActionListener()
 	  {
-		public void actionPerformed(ActionEvent event)
-		{
+		public void actionPerformed(ActionEvent event) {
 		String rstring = radius.getText();
 		Double rvalue = Double.valueOf(rstring);
 		String hstring = side.getText();
 		Double hvalue = Double.valueOf(hstring);
-		String wmessage = "WOW, THAT IS HEAVY";
-		String wtitle = "ARE YOU KIDDING?";
-		int psel = planets.getSelectedIndex();
+		//rvalue and hvalue are the double values of the two user inputs
+		int psel = shape.getSelectedIndex();
 		switch (psel)
 		{
-		case 0: 
+		case 0: // Capsule case
 		sa = (2 * Math.PI * rvalue) * (2 * rvalue + hvalue);
 		volumee = (Math.PI * Math.pow(rvalue, 2)) * ((4/3)*rvalue + hvalue);
 		break;
-		case 1: 
+		case 1: // Cone case
 		double slant = Math.sqrt(Math.pow(rvalue, 2) + Math.pow(hvalue, 2));
 		sa = (Math.PI * Math.pow(rvalue, 2)) + (Math.PI * rvalue * slant);	
 		double volumepart = (Math.PI * Math.pow(rvalue, 2) * hvalue);
 		volumee = volumepart * (1/3);
 		break;
-		case 2:
+		case 2: // Cylinder case
 		volumee = Math.PI * Math.pow(rvalue, 2) * hvalue;
 		sa = (2 * Math.PI * rvalue * hvalue) + (2 * (Math.PI * Math.pow(rvalue, 2))); 
 		break;
-		case 3: 
-		rvalue = 0.0;
+		case 3: // Cube case
 		volumee = Math.pow(hvalue, 3);
 		sa = 6 * Math.pow(hvalue, 2); 
 		break;
-		case 4:
-		hvalue = 0.0;
+		case 4: // Hemisphere case
 		volumee = (2.0 / 3.0) * Math.PI * Math.pow(rvalue, 3);
 		sa = 3 * Math.PI * Math.pow(rvalue, 2); 
 		break;
-		case 5:
-		hvalue = 0.0;
+		case 5: // Sphere case
 		volumee = (4 / 3) * Math.PI * Math.pow(rvalue, 3);
 		sa = 4 * Math.PI * Math.pow(rvalue, 2);
 		break;
 		}  //** switch
-		cmessage = "Why are you weighing yourself on the Sun?";
 		
-//EXPLORATION 2:
-//Following code will be replaced as described above
 		if (psel == 0) 
 		{
 		    clabel =new JLabel( "Capsules are cool!");
@@ -114,7 +107,7 @@ public ShapesGUI()
 			mlabel = new JLabel("Capsule Fact");
 			mlabel.setFont(Output_font);	    
 			JOptionPane.showMessageDialog(null,  clabel, mtitle, JOptionPane.PLAIN_MESSAGE, Icon);
-		}
+		}// end of if 0
 		String mmessage = "Remember, no air on the Moon";
 		if (psel ==1)
 		{
@@ -122,7 +115,7 @@ public ShapesGUI()
 			clabel =new JLabel( "I love cones, especially full of ice cream!");
 		    clabel.setFont(Output_font);
 		    JOptionPane.showMessageDialog(null, clabel, mtitle, JOptionPane.PLAIN_MESSAGE, Icon2);
-		}
+		}// end of if 1
 		
 		if (psel ==2)
 		{
@@ -130,7 +123,7 @@ public ShapesGUI()
 			clabel =new JLabel( "Cylinders are just circles, but taller!");
 		    clabel.setFont(Output_font);	    
 		    JOptionPane.showMessageDialog(null, clabel, mtitle, JOptionPane.PLAIN_MESSAGE, Icon3);
-		}
+		}// end of if 2
 		
 		if (psel == 3)
 		{
@@ -138,14 +131,14 @@ public ShapesGUI()
 		clabel =new JLabel("A cube is a square that just didn't think two dimensions were enough.");
 	    clabel.setFont(Output_font);
 		JOptionPane.showMessageDialog(null,  clabel, mtitle, JOptionPane.PLAIN_MESSAGE, Icon3);
-		}
+		}// end of if 3
 		
 		if (psel == 4)
 		{
 		mtitle = "Fun Fact: Hemispheres";
 		cmessage = "Hemispheres: for when a sphere is just too much!";
 		JOptionPane.showMessageDialog(null,  cmessage, mtitle, JOptionPane.PLAIN_MESSAGE, Icon2);
-		}
+		}// end of if 4
 		
 		if (psel == 5)
 		{
@@ -153,10 +146,9 @@ public ShapesGUI()
 		clabel =new JLabel( "Spheres make the world go round!");
 	    clabel.setFont(Output_font);
 		JOptionPane.showMessageDialog(null,  clabel, mtitle, JOptionPane.PLAIN_MESSAGE, Icon4);
-		}
+		}// end of if 5
 		
 	
-//END OF EXPLORATION 2 BLOCK
 		
 		DecimalFormat tout = new DecimalFormat("##.00");
 		String tstring = tout.format(sa);
@@ -168,17 +160,17 @@ public ShapesGUI()
 		}//** actionPerformed
 	  });  //** Action Listener
 	   
-	} //** PWeights constructor
+	} //** ShapesGUI constructor
 public static void main(String[] args) 
 {
-ShapesGUI frame = new ShapesGUI();	
+ShapesGUI frame = new ShapesGUI();	//Manages the appearance of the GUI
 frame.setTitle("Patrick's Mighty Shapes Calculator");
 frame.setFont(font);
 frame.setLocationRelativeTo(null);
 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 frame.setSize(500, 200);
 frame.setBackground(Color.CYAN);
-frame.getContentPane().setBackground(Color.cyan);
+frame.getContentPane().setBackground(Color.yellow);
 frame.setVisible(true);
 
 
