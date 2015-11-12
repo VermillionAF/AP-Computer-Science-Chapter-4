@@ -12,10 +12,6 @@ import java.awt.Font;
 public class ShapesGUI extends JFrame {
 
 	ImageIcon Icon = new ImageIcon("/Users/s960339/Documents/APCS/shaq.gif");
-	final ImageIcon Icon2 = new ImageIcon("/Users/s960339/Documents/APCS/36.gif");
-	final ImageIcon Icon3 = new ImageIcon("/Users/s960339/Documents/APCS/giphy.gif");
-	final ImageIcon Icon4 = new ImageIcon("/Users/s960339/Documents/APCS/John-Cena-Shock-to-Smile.gif");
-	final ImageIcon Icon5 = new ImageIcon("/Users/s960339/Documents/APCS/375.gif");
 	
 	public JTextField radius, side, suar, volume;
 	public JLabel rad, sidep, surf, vol, clabel, mlabel;
