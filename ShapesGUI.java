@@ -13,8 +13,8 @@ public class ShapesGUI extends JFrame {
 
 	ImageIcon Icon = new ImageIcon("/Users/s960339/Documents/APCS/shaq.gif");
 	
-	public JTextField radius, side, suar, volume;
-	public JLabel rad, sidep, surf, vol, clabel, mlabel;
+	public JTextField radius, side, suar, volume, height;
+	public JLabel rad, sidep, surf, vol, clabel, mlabel, hei;
 	public JButton CalculateButton;
 	public String mtitle, cmessage;
 	public double sa, volumee;
@@ -27,20 +27,24 @@ public class ShapesGUI extends JFrame {
 public ShapesGUI() 
 {
    setLayout(new FlowLayout(FlowLayout.LEFT, 10, 20));
-   rad = new JLabel("Radius (m)");
+   rad = new JLabel("Radius:");
    add(rad);
    radius = new JTextField(8);// Text box for radius
    add(radius);
    setEnabled(true);
    setVisible(true);
-   radius.setText("0");
-   sidep = new JLabel("Length (m)");
+   sidep = new JLabel("Side / a:");
    add(sidep);
    side = new JTextField(8);// Text box for length
    add(side);
    setEnabled(true);
    setVisible(true);
-   side.setText("0");
+   hei = new JLabel("Height:");
+   add(hei);
+   height = new JTextField(8);// Text box for length
+   add(height);
+   setEnabled(true);
+   setVisible(true);
    surf = new JLabel("Surface Area (m^2)");
    add(surf);
    suar = new JTextField(8);// Text box used for surface area output
@@ -57,14 +61,25 @@ public ShapesGUI()
    shape.setSelectedIndex(0);
    add(shape);
    setEnabled(true);
-   CalculateButton = new JButton("Swagulate");// Calculate 
+   CalculateButton = new JButton("Calculate");// Calculate 
    add(CalculateButton);
    CalculateButton.addActionListener( new ActionListener()
 	  {
 		public void actionPerformed(ActionEvent event) {
+		if (radius.getText().isEmpty()) {
+			radius.setText("0");
+		}//end of if radius is empty
+		if (side.getText().isEmpty()) {
+			side.setText("0");
+		}// end of if side is empty
+		if (height.getText().isEmpty()) {
+			height.setText("0");
+		}
 		String rstring = radius.getText();
 		Double rvalue = Double.valueOf(rstring);
-		String hstring = side.getText();
+		String sstring = side.getText();
+		Double svalue = Double.valueOf(sstring);
+		String hstring = height.getText();
 		Double hvalue = Double.valueOf(hstring);
 		int rng = (int) (Math.random() * 50);
 		if (rng >= 0 && rng < 10) {
@@ -83,27 +98,27 @@ public ShapesGUI()
 		else {
 			Icon = new ImageIcon(icons[4]);
 		}
-		//rvalue and hvalue are the double values of the two user inputs
+		//rvalue and svalue are the double values of the two user inputs
 		int psel = shape.getSelectedIndex();
 		switch (psel)
 		{
 		case 0: // Capsule case
-		sa = (2 * Math.PI * rvalue) * (2 * rvalue + hvalue);
-		volumee = (Math.PI * Math.pow(rvalue, 2)) * ((4/3)*rvalue + hvalue);
+		sa = (2 * Math.PI * rvalue) * (2 * rvalue + svalue);
+		volumee = (Math.PI * Math.pow(rvalue, 2)) * ((4/3)*rvalue + svalue);
 		break;
 		case 1: // Cone case
-		double slant = Math.sqrt(Math.pow(rvalue, 2) + Math.pow(hvalue, 2));
+		double slant = Math.sqrt(Math.pow(rvalue, 2) + Math.pow(svalue, 2));
 		sa = (Math.PI * Math.pow(rvalue, 2)) + (Math.PI * rvalue * slant);	
-		double volumepart = (Math.PI * Math.pow(rvalue, 2) * hvalue);
+		double volumepart = (Math.PI * Math.pow(rvalue, 2) * svalue);
 		volumee = volumepart * (1/3);
 		break;
 		case 2: // Cylinder case
-		volumee = Math.PI * Math.pow(rvalue, 2) * hvalue;
-		sa = (2 * Math.PI * rvalue * hvalue) + (2 * (Math.PI * Math.pow(rvalue, 2))); 
+		volumee = Math.PI * Math.pow(rvalue, 2) * svalue;
+		sa = (2 * Math.PI * rvalue * svalue) + (2 * (Math.PI * Math.pow(rvalue, 2))); 
 		break;
 		case 3: // Cube case
-		volumee = Math.pow(hvalue, 3);
-		sa = 6 * Math.pow(hvalue, 2); 
+		volumee = Math.pow(svalue, 3);
+		sa = 6 * Math.pow(svalue, 2); 
 		break;
 		case 4: // Hemisphere case
 		volumee = (2.0 / 3.0) * Math.PI * Math.pow(rvalue, 3);
@@ -184,9 +199,24 @@ frame.setTitle("Patrick's Mighty Shapes Calculator");
 frame.setFont(font);
 frame.setLocationRelativeTo(null);
 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-frame.setSize(500, 200);
+frame.setSize(600, 200);
+int rngcolor = (int) (Math.random() * 50);
 frame.setBackground(Color.CYAN);
-frame.getContentPane().setBackground(Color.yellow);
+if (rngcolor >= 0 && rngcolor < 10) {
+	frame.getContentPane().setBackground(Color.cyan);
+}// end of if cyan
+else if (rngcolor >= 10 && rngcolor < 20) {
+	frame.getContentPane().setBackground(Color.pink);
+}// end of if pink
+else if (rngcolor >= 20 && rngcolor < 30) {
+	frame.getContentPane().setBackground(Color.yellow);
+}//end of if yellow
+else if (rngcolor >= 30 && rngcolor < 40) {
+	frame.getContentPane().setBackground(Color.white);
+}
+else if (rngcolor >= 40 && rngcolor <= 50) {
+	frame.getContentPane().setBackground(Color.magenta);
+}
 frame.setVisible(true);
 
 
