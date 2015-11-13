@@ -41,7 +41,7 @@ public ShapesGUI()
    setVisible(true);
    hei = new JLabel("Height:");
    add(hei);
-   height = new JTextField(8);// Text box for length
+   height = new JTextField(8);// Text box for height
    add(height);
    setEnabled(true);
    setVisible(true);
@@ -74,13 +74,22 @@ public ShapesGUI()
 		}// end of if side is empty
 		if (height.getText().isEmpty()) {
 			height.setText("0");
-		}
+		}// end of if height is empty
 		String rstring = radius.getText();
 		Double rvalue = Double.valueOf(rstring);
 		String sstring = side.getText();
 		Double svalue = Double.valueOf(sstring);
 		String hstring = height.getText();
 		Double hvalue = Double.valueOf(hstring);
+		if (rvalue < 0) {
+			rvalue = 0.0;
+		}//if rvalue is less than zero
+		if (svalue < 0) {
+			svalue = 0.0;
+		}//if svalue is less than zero
+		if (hvalue < 0) {
+			hvalue = 0.0;
+		}//if hvalue is less than zero
 		int rng = (int) (Math.random() * 50);
 		if (rng >= 0 && rng < 10) {
 			// random number generator that determines what icon is used for the pop-up
@@ -107,14 +116,14 @@ public ShapesGUI()
 		volumee = (Math.PI * Math.pow(rvalue, 2)) * ((4/3)*rvalue + svalue);
 		break;
 		case 1: // Cone case
-		double slant = Math.sqrt(Math.pow(rvalue, 2) + Math.pow(svalue, 2));
+		double slant = Math.sqrt(Math.pow(rvalue, 2) + Math.pow(hvalue, 2));
 		sa = (Math.PI * Math.pow(rvalue, 2)) + (Math.PI * rvalue * slant);	
-		double volumepart = (Math.PI * Math.pow(rvalue, 2) * svalue);
+		double volumepart = (Math.PI * Math.pow(rvalue, 2) * hvalue);
 		volumee = volumepart * (1/3);
 		break;
 		case 2: // Cylinder case
-		volumee = Math.PI * Math.pow(rvalue, 2) * svalue;
-		sa = (2 * Math.PI * rvalue * svalue) + (2 * (Math.PI * Math.pow(rvalue, 2))); 
+		volumee = Math.PI * Math.pow(rvalue, 2) * hvalue;
+		sa = (2 * Math.PI * rvalue * hvalue) + (2 * (Math.PI * Math.pow(rvalue, 2))); 
 		break;
 		case 3: // Cube case
 		volumee = Math.pow(svalue, 3);
@@ -139,7 +148,6 @@ public ShapesGUI()
 			mlabel.setFont(Output_font);	    
 			JOptionPane.showMessageDialog(null,  clabel, mtitle, JOptionPane.PLAIN_MESSAGE, Icon);
 		}// end of if 0
-		String mmessage = "Remember, no air on the Moon";
 		if (psel ==1)
 		{
 		    mtitle = "Fun Fact: Cones";
@@ -202,7 +210,7 @@ frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 frame.setSize(600, 200);
 int rngcolor = (int) (Math.random() * 50);
 frame.setBackground(Color.CYAN);
-if (rngcolor >= 0 && rngcolor < 10) {
+if (rngcolor >= 0 && rngcolor < 10) { // random number generator that determines panel color
 	frame.getContentPane().setBackground(Color.cyan);
 }// end of if cyan
 else if (rngcolor >= 10 && rngcolor < 20) {
@@ -212,7 +220,7 @@ else if (rngcolor >= 20 && rngcolor < 30) {
 	frame.getContentPane().setBackground(Color.yellow);
 }//end of if yellow
 else if (rngcolor >= 30 && rngcolor < 40) {
-	frame.getContentPane().setBackground(Color.white);
+	frame.getContentPane().setBackground(Color.green);
 }
 else if (rngcolor >= 40 && rngcolor <= 50) {
 	frame.getContentPane().setBackground(Color.magenta);
