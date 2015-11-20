@@ -1,9 +1,19 @@
+/*
+ * Name: Patrick Wooden
+ * 
+ * Revision 0: Initial version
+ * 
+ * Description: Program asks the user to pick a shape they wish to calculate surface area and
+ * volume, and they input the required information into the given text fields. Program than displays 
+ * a pop-up with an image and a brief statement about the shape. After this, the program will
+ * output the surface area and volume.
+ */
+
 import javax.swing.*;
 
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.net.URL;
 import java.awt.Graphics;
 import java.text.DecimalFormat;
 import java.awt.Color;
@@ -113,13 +123,13 @@ public ShapesGUI()
 		{
 		case 0: // Capsule case
 		sa = (2 * Math.PI * rvalue) * (2 * rvalue + svalue);
-		volumee = (Math.PI * Math.pow(rvalue, 2)) * ((4/3)*rvalue + svalue);
+		volumee = Math.PI * Math.pow(rvalue, 2) * ((4.0/3.0) * rvalue + svalue);
 		break;
 		case 1: // Cone case
 		double slant = Math.sqrt(Math.pow(rvalue, 2) + Math.pow(hvalue, 2));
 		sa = (Math.PI * Math.pow(rvalue, 2)) + (Math.PI * rvalue * slant);	
 		double volumepart = (Math.PI * Math.pow(rvalue, 2) * hvalue);
-		volumee = volumepart * (1/3);
+		volumee = volumepart * (1.0/3.0);
 		break;
 		case 2: // Cylinder case
 		volumee = Math.PI * Math.pow(rvalue, 2) * hvalue;
@@ -134,7 +144,7 @@ public ShapesGUI()
 		sa = 3 * Math.PI * Math.pow(rvalue, 2); 
 		break;
 		case 5: // Sphere case
-		volumee = (4 / 3) * Math.PI * Math.pow(rvalue, 3);
+		volumee = (4.0 / 3.0) * Math.PI * Math.pow(rvalue, 3);
 		sa = 4 * Math.PI * Math.pow(rvalue, 2);
 		break;
 		}  //** switch
