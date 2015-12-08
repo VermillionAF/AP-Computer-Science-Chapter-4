@@ -72,9 +72,9 @@ public class Vectors {
 			mgv = Math.pow(xv, 2) + Math.pow(yv, 2);// Finds the squared magnitude of the vector sum.
 			magv = Math.sqrt(mgv);// Finds the magnitude of the vector sum of the two given vectors (displayed).
 			// The system.out statements all print the data labeled previously with '(displayed)'.
-			System.out.print("|V1| = ");
+			System.out.print("|V1| (magnitude) = ");
 			System.out.printf("%.3f", mag1);
-			System.out.print("\n|V2| = ");
+			System.out.print("\n|V2| (maagnitude) = ");
 			System.out.printf("%.3f", mag2);
 			System.out.print("\ntheta of V1 (degrees) = ");
 			System.out.printf("%.3f", ang1d);
@@ -89,7 +89,7 @@ public class Vectors {
 			System.out.print(",");
 			System.out.printf("%.3f", yv);
 			System.out.print(">\n");
-			System.out.print("|Vsum| = ");
+			System.out.print("|Vsum| (magnitude) = ");
 			System.out.printf("%.3f", magv);
 			System.out.print("\ntheta of Vsum (degrees) = ");
 			System.out.printf("%.3f", angvd);
