@@ -23,7 +23,7 @@ import java.util.*;
 public class Vectors {
 	public static boolean companswer = false, anganswer = false, dataanswer = false;
 	public static String magmag, angang, magmag2, angang2;
-	public static void main(String[] args) {
+	public static vo[id main(String[] args) {
 		double x1, x2, y1, y2; // declares variables inputed by user
 		double magv, xv, yv, mgv, angvd, angvr, mag1, mag2, mg1, mg2, ang1r, ang2r, ang1d, ang2d;// declares variables created by program to be output
 		double m_mag, m_ang, m_mag2, m_ang2, m_x1, m_x2, m_y1, m_y2, m_yv, m_xv, m_magv, m_mgv, m_angd, m_angr; // declares variables used in the magnitude&angle portion of the program
@@ -95,6 +95,11 @@ public class Vectors {
 			System.out.printf("%.3f", angvd);
 			System.out.print(", (radians) = ");
 			System.out.printf("%.3f", angvr);
+			System.out.print("\nunit vector of Vsum = <");
+			System.out.printf("%.3f", (xv / magv));
+			System.out.print(", ");
+			System.out.printf("%.3f", (yv / magv));
+			System.out.print("> ");
 			companswer = true;
 			dataanswer = true;
 			}//end of if-numeric
@@ -172,6 +177,11 @@ public class Vectors {
 						System.out.printf("%.3f", m_angd);
 						System.out.print(", (radians) = ");
 						System.out.printf("%.3f", m_angr);
+						System.out.print("\nunit vector of Vsum = <");
+						System.out.printf("%.3f", (m_xv / m_magv));
+						System.out.print(", ");
+						System.out.printf("%.3f", (m_yv / m_magv));
+						System.out.print("> ");
 						anganswer = true;
 						dataanswer = true;
 						break;
